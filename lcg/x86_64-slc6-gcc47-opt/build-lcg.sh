@@ -1,0 +1,31 @@
+#!/bin/sh
+
+set -e
+
+### ---------------------------------------------------------------------------
+echo "::: install hwaf..."
+mkdir -p $HWAF_ROOT
+curl -L -O http://cern.ch/hwaf/downloads/tar/hwaf-$HWAF_VERSION-linux-amd64.tar.gz | \
+    tar -C $HWAF_ROOT -zxf -
+
+export PATH=$HWAF_ROOT/bin:$PATH
+echo "::: install hwaf... [ok]"
+
+
+### ---------------------------------------------------------------------------
+echo "::: build lcg stack..."
+
+mkdir -p /build
+pushd /build
+
+git clone git://github.com/atlas-org/lcg-builders
+pushd lcg-builders
+hwaf init
+hwaf setup -variant=$HWAF_VARIANT
+hwaf configure --prefix=$SITEROOT/sw/lcg/external
+hwaf
+popd # lcg-builders
+
+popd # /build
+echo "::: build lcg stack... [ok]"
+## EOF ##

@@ -3,13 +3,13 @@
 set -e
 
 ### ---------------------------------------------------------------------------
-echo "::: install hwaf..."
+echo "::: install hwaf-${HWAF_VERSION}... ($HWAF_ROOT)"
 mkdir -p $HWAF_ROOT
 curl -L -O http://cern.ch/hwaf/downloads/tar/hwaf-$HWAF_VERSION-linux-amd64.tar.gz | \
     tar -C $HWAF_ROOT -zxf -
 
 export PATH=$HWAF_ROOT/bin:$PATH
-echo "::: install hwaf... [ok]"
+echo "::: install hwaf-${HWAF_VERSION}... ($HWAF_ROOT) [ok]"
 
 
 ### ---------------------------------------------------------------------------

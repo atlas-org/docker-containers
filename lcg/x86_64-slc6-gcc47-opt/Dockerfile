@@ -17,7 +17,7 @@ RUN export HWAF_VERSION
 RUN export HWAF_ROOT
 
 ## system deps
-RUN yum install -y bzip2-devel texinfo git gcc gcc-c++
+RUN yum install -y bzip2-devel texinfo git gcc gcc-c++ m4 make
 
 ADD build-lcg.sh /root/build-lcg.sh
 RUN /root/build-lcg.sh

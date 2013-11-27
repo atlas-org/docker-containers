@@ -28,4 +28,10 @@ popd # lcg-builders
 
 popd # /build
 echo "::: build lcg stack... [ok]"
+
+### ----
+echo "::: cleaning up filesystem..."
+/bin/rm -rf /build/lcg-builders
+echo "::: cleaning up filesystem... [ok]"
+
 ## EOF ##

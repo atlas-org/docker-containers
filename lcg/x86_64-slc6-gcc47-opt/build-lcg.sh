@@ -8,7 +8,6 @@ mkdir -p $HWAF_ROOT
 curl -L http://cern.ch/hwaf/downloads/tar/hwaf-$HWAF_VERSION-linux-amd64.tar.gz | \
     tar -C $HWAF_ROOT -zxf -
 
-export PATH=$HWAF_ROOT/bin:$PATH
 echo "::: install hwaf-${HWAF_VERSION}... ($HWAF_ROOT) [ok]"
 
 

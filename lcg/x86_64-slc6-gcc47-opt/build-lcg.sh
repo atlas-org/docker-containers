@@ -14,8 +14,8 @@ echo "::: install hwaf-${HWAF_VERSION}... ($HWAF_ROOT) [ok]"
 ### ---------------------------------------------------------------------------
 echo "::: build lcg stack..."
 
-mkdir -p /build
-pushd /build
+mkdir -p /tmp
+pushd /tmp
 
 git clone git://github.com/atlas-org/lcg-builders
 pushd lcg-builders
@@ -25,12 +25,12 @@ hwaf configure --prefix=$SITEROOT/sw/lcg/external
 hwaf
 popd # lcg-builders
 
-popd # /build
+popd # /tmp
 echo "::: build lcg stack... [ok]"
 
 ### ----
 echo "::: cleaning up filesystem..."
-/bin/rm -rf /build/lcg-builders
+/bin/rm -rf /tmp/lcg-builders
 echo "::: cleaning up filesystem... [ok]"
 
 ## EOF ##

@@ -3,13 +3,7 @@
 set -e
 
 ### ---------------------------------------------------------------------------
-echo "::: install hwaf-${HWAF_VERSION}... ($HWAF_ROOT)"
-mkdir -p $HWAF_ROOT
-curl -L http://cern.ch/hwaf/downloads/tar/hwaf-$HWAF_VERSION-linux-amd64.tar.gz | \
-    tar -C $HWAF_ROOT -zxf -
-
-echo "::: install hwaf-${HWAF_VERSION}... ($HWAF_ROOT) [ok]"
-
+./install-hwaf.sh $HWAF_ROOT $HWAF_VERSION
 
 ### ---------------------------------------------------------------------------
 echo "::: build lcg stack..."

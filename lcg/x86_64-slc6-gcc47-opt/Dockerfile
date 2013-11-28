@@ -23,7 +23,7 @@ RUN yum install -y binutils-devel bzip2-devel bzip2 file git gcc gcc-c++ libXpm-
 
 ADD install-hwaf.sh       /root/install-hwaf.sh
 ADD build-lcg.sh          /root/build-lcg.sh
-RUN /root/build-lcg.sh
+RUN (cd /root && ./build-lcg.sh)
 RUN /bin/rm /root/build-lcg.sh
 
 ## EOF

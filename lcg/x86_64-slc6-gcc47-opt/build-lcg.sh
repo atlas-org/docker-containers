@@ -17,6 +17,7 @@ echo "::: build lcg stack..."
 mkdir -p /tmp
 pushd /tmp
 
+/bin/rm -rf lcg-builders
 git clone git://github.com/atlas-org/lcg-builders
 pushd lcg-builders
 hwaf init

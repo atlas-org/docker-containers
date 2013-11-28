@@ -1,5 +1,5 @@
 ## a Dockerfile to install the whole LCG stack
-FROM binet/slc6-64
+FROM binet/slc
 MAINTAINER binet@cern.ch
 
 ENV HOME     /root

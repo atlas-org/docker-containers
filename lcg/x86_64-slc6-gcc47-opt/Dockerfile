@@ -21,8 +21,8 @@ RUN export PATH
 ## system deps
 RUN yum install -y binutils-devel bzip2-devel bzip2 file git gcc gcc-c++ libXpm-devel libXft-devel libXext-devel m4 make ncurses-devel patch tar texinfo
 
-ADD install-hwaf.sh    /root/install-hwaf.sh
-ADD build-lcg.sh       /root/build-lcg.sh
+ADD ../../install-hwaf.sh    /root/install-hwaf.sh
+ADD build-lcg.sh             /root/build-lcg.sh
 RUN /root/build-lcg.sh
 RUN /bin/rm /root/build-lcg.sh
 

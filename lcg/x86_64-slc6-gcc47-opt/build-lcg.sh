@@ -12,7 +12,7 @@ mkdir -p /tmp
 pushd /tmp
 
 /bin/rm -rf lcg-builders
-git clone git://github.com/atlas-org/lcg-builders
+git clone -b lcg-65-branch git://github.com/atlas-org/lcg-builders
 pushd lcg-builders
 hwaf init
 hwaf setup -variant=$HWAF_VARIANT

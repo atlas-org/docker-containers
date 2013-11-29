@@ -16,7 +16,7 @@ git clone git://github.com/atlas-org/lcg-builders
 pushd lcg-builders
 hwaf init
 hwaf setup -variant=$HWAF_VARIANT
-hwaf configure --prefix=$SITEROOT/sw/lcg/external 
+hwaf configure --prefix=$SITEROOT
 hwaf
 popd # lcg-builders
 

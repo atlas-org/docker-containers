@@ -18,6 +18,9 @@ RUN export HWAF_VERSION
 RUN export HWAF_ROOT
 RUN export PATH
 
+ENV MODULEPATH $SITEROOT/sw/modules:$MODULEPATH
+RUN export MODULEPATH
+
 ## system deps
 RUN yum install -y autoconf automake binutils-devel bzip2-devel bzip2 environment-modules file git gcc gcc-c++ libtool libXpm-devel libXft-devel libXext-devel m4 make ncurses-devel patch readline readline-devel tar texinfo
 

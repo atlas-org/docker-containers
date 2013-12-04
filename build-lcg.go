@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
+	"path/filepath"
 )
 
 var g_hwaf_version = flag.String("hwaf-version", "20131203", "hwaf version to use")
@@ -17,12 +18,19 @@ func main() {
 	script := "build-lcg.sh"
 	fmt.Printf(">>> [%s]\n", script)
 
+	pwd, err := os.Getwd()
+	if err != nil {
+		panic(err)
+	}
+
+	voldir := filepath.Join(pwd, "lcg", *g_hwaf_variant)
+
 	docker := exec.Command(
 		"sudo",
 		"docker",
 		"run",
 		"binet/slc",
-		fmt.Sprintf("-v=/build:lcg/%s", *g_hwaf_variant),
+		fmt.Sprintf("-v=/build:%s", voldir),
 		script,
 		*g_hwaf_variant,
 		*g_hwaf_version,
@@ -32,7 +40,7 @@ func main() {
 	docker.Stderr = os.Stderr
 	docker.Stdin = os.Stdin
 
-	err := docker.Run()
+	err = docker.Run()
 	if err != nil {
 		panic(err)
 	}

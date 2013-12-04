@@ -17,7 +17,7 @@ export PATH
 export MODULEPATH=$SITEROOT/sw/modules:$MODULEPATH
 
 set -e
-set -w
+set -x
 
 ### ---------------------------------------------------------------------------
 echo "::: install base RPMs..."

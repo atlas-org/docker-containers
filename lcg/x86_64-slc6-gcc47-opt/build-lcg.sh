@@ -1,8 +1,8 @@
 #!/bin/sh
 
 TOPDIR=$1;       shift
-HWAF_VARIANT=$1; shift
 HWAF_VERSION=$1; shift
+HWAF_VARIANT=$1; shift
 SITEROOT=$1;     shift
 
 HWAF_ROOT=$SITEROOT/hwaf/hwaf-$HWAF_VERSION/linux-amd64

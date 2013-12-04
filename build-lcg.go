@@ -34,8 +34,8 @@ func main() {
 		"/bin/sh",
 		script,
 		"/build",
-		*g_hwaf_variant,
 		*g_hwaf_version,
+		*g_hwaf_variant,
 		*g_siteroot,
 	)
 	docker.Stdout = os.Stdout

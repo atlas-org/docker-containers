@@ -33,6 +33,7 @@ func main() {
 		"binet/slc",
 		"/bin/sh",
 		script,
+		"/build",
 		*g_hwaf_variant,
 		*g_hwaf_version,
 		*g_siteroot,

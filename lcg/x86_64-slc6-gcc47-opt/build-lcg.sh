@@ -1,5 +1,6 @@
 #!/bin/sh
 
+TOPDIR=$1;       shift
 HWAF_VARIANT=$1; shift
 HWAF_VERSION=$1; shift
 SITEROOT=$1;     shift
@@ -34,8 +35,8 @@ echo "::: install hwaf-${HWAF_VERSION}... ($HWAF_ROOT) [ok]"
 ### ---------------------------------------------------------------------------
 echo "::: build lcg stack..."
 
-mkdir -p /tmp
-pushd /tmp
+mkdir -p $TOPDIR/scratch
+pushd $TOPDIR/scratch
 
 /bin/rm -rf lcg-builders
 git clone -b lcg-65-branch git://github.com/atlas-org/lcg-builders
@@ -46,12 +47,12 @@ hwaf configure --prefix=$SITEROOT
 hwaf
 popd # lcg-builders
 
-popd # /tmp
+popd # $TOPDIR/scratch
 echo "::: build lcg stack... [ok]"
 
 ### ----
 echo "::: cleaning up filesystem..."
-/bin/rm -rf /tmp/lcg-builders
+/bin/rm -rf $TOPDIR/scratch/lcg-builders
 echo "::: cleaning up filesystem... [ok]"
 
 ## EOF ##

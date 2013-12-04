@@ -15,7 +15,7 @@ var g_siteroot = flag.String("siteroot", "/opt/atlas-sw", "where to install soft
 func main() {
 	flag.Parse()
 
-	script := "build-lcg.sh"
+	script := "/build/build-lcg.sh"
 	fmt.Printf(">>> [%s]\n", script)
 
 	pwd, err := os.Getwd()
@@ -29,8 +29,9 @@ func main() {
 		"sudo",
 		"docker",
 		"run",
-		"binet/slc",
 		fmt.Sprintf("-v=%s:/build", voldir),
+		"binet/slc",
+		"/bin/sh",
 		script,
 		*g_hwaf_variant,
 		*g_hwaf_version,

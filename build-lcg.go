@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
-	"path/filepath"
 )
 
 var g_hwaf_version = flag.String("hwaf-version", "20131203", "hwaf version to use")
@@ -15,15 +14,15 @@ var g_siteroot = flag.String("siteroot", "/opt/atlas-sw", "where to install soft
 func main() {
 	flag.Parse()
 
-	script := os.Args[1]
-	script, err := filepath.Abs(script)
-
+	script := "build-lcg.sh"
 	fmt.Printf(">>> [%s]\n", script)
 
 	docker := exec.Command(
+		"sudo",
 		"docker",
 		"run",
 		"binet/slc",
+		fmt.Sprintf("-v=/build:lcg/%s", *g_hwaf_variant),
 		script,
 		*g_hwaf_variant,
 		*g_hwaf_version,
@@ -33,7 +32,7 @@ func main() {
 	docker.Stderr = os.Stderr
 	docker.Stdin = os.Stdin
 
-	err = docker.Run()
+	err := docker.Run()
 	if err != nil {
 		panic(err)
 	}

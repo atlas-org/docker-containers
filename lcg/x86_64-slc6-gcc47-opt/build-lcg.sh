@@ -35,7 +35,8 @@ echo "::: install hwaf-${HWAF_VERSION}... ($HWAF_ROOT) [ok]"
 ### ---------------------------------------------------------------------------
 echo "::: build lcg stack..."
 
-mkdir -p $TOPDIR/scratch
+/bin/rm -rf $TOPDIR/scratch
+/bin/mkdir -p $TOPDIR/scratch
 pushd $TOPDIR/scratch
 
 /bin/rm -rf lcg-builders

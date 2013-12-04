@@ -30,7 +30,7 @@ func main() {
 		"docker",
 		"run",
 		"binet/slc",
-		fmt.Sprintf("-v=/build:%s", voldir),
+		fmt.Sprintf("-v=%s:/build", voldir),
 		script,
 		*g_hwaf_variant,
 		*g_hwaf_version,

@@ -99,7 +99,7 @@ if [ -f "/etc/bashrc" ] ; then
 fi
 EOF
 
-cat > /root/.bash_profile << EOF
+cat > /root/.bash_profile <<EOF
 # Personal environment variables and startup programs.
 
 # Personal aliases and functions should go in ~/.bashrc.  System wide
@@ -109,6 +109,31 @@ cat > /root/.bash_profile << EOF
 if [ -f "$HOME/.bashrc" ] ; then
   source $HOME/.bashrc
 fi
+
+export PYTHONSTARTUP=/root/.pythonrc.py
+EOF
+
+## for a nice python prompt
+cat > /root/.pythonrc.py <<EOF
+##
+## for tab-completion
+##
+import rlcompleter, readline
+readline.parse_and_bind('tab: complete')
+readline.parse_and_bind( 'set show-all-if-ambiguous On' )
+
+##
+## for history
+##
+import os, atexit
+histfile = os.path.join(os.environ["HOME"], ".python_history")
+try:
+    readline.read_history_file(histfile)
+except IOError:
+    pass
+atexit.register(readline.write_history_file, histfile)
+del os, atexit, histfile
+del readline
 EOF
 
 # to restore locales later:

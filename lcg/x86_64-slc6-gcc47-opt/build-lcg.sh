@@ -35,6 +35,9 @@ yum install -y \
     readline readline-devel \
     tar texinfo
 
+## setup env-modules
+. /etc/profile.d/modules.sh
+
 ### ---------------------------------------------------------------------------
 echo "::: install hwaf-${HWAF_VERSION}... ($HWAF_ROOT)"
 mkdir -p $HWAF_ROOT

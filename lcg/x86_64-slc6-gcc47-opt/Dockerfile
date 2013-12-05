@@ -18,7 +18,7 @@ RUN export HWAF_VERSION
 RUN export HWAF_ROOT
 RUN export PATH
 
-ENV MODULEPATH $SITEROOT/sw/modules:$MODULEPATH
+ENV MODULEPATH $SITEROOT/sw/modules/$HWAF_VARIANT:$MODULEPATH
 RUN export MODULEPATH
 RUN . /etc/profile.d/modules.sh
 #RUN module load lcg

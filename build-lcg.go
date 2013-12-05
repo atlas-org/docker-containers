@@ -34,7 +34,7 @@ func main() {
 		"-t="+*g_docker_tag+"-"+*g_hwaf_variant,
 		//"run",
 		//fmt.Sprintf("-v=%s:/build", voldir),
-		"binet/slc",
+		//"binet/slc",
 		voldir,
 		//"/bin/sh",
 		script,

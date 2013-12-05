@@ -44,7 +44,7 @@ func main() {
 
 	fmt.Printf(">>> [%v]\n", cmdargs)
 
-	docker := exec.Command("sudo", cmdargs)
+	docker := exec.Command("sudo", cmdargs...)
 
 	docker.Stdout = os.Stdout
 	docker.Stderr = os.Stderr

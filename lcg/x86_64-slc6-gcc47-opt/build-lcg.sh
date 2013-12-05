@@ -19,6 +19,14 @@ export PATH
 
 export MODULEPATH=$SITEROOT/sw/modules:$MODULEPATH
 
+echo "=========================================================================="
+echo "SITEROOT:     [$SITEROOT]"
+echo "HWAF_VARIANT: [$HWAF_VARIANT]"
+echo "HWAF_VERSION: [$HWAF_VERSION]"
+echo "HWAF_ROOT:    [$HWAF_ROOT]"
+echo "PATH:         [$PATH]"
+echo "=========================================================================="
+
 set -e
 set -x
 

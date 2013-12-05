@@ -1,5 +1,5 @@
 ## a Dockerfile to install the whole LCG stack
-FROM binet/lcg-65-x86_64-slc6-gcc47-opt
+FROM binet/slc
 MAINTAINER binet@cern.ch
 
 ENV HOME     /root
@@ -17,6 +17,11 @@ RUN export HWAF_VARIANT
 RUN export HWAF_VERSION
 RUN export HWAF_ROOT
 RUN export PATH
+
+VOLUME ["/build"]
+ADD build-lcg.sh /build/build-lcg.sh
+
+RUN /build/build-lcg.sh /build $HWAF_VERSION $HWAF_VARIANT $SITEROOT build-lcg-base.cfg
 
 ENV MODULEPATH $SITEROOT/sw/modules/$HWAF_VARIANT:$MODULEPATH
 RUN export MODULEPATH

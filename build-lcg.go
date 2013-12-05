@@ -11,6 +11,8 @@ import (
 var g_hwaf_version = flag.String("hwaf-version", "20131204", "hwaf version to use")
 var g_hwaf_variant = flag.String("hwaf-variant", "x86_64-slc6-gcc47-opt", "hwaf variant to use")
 var g_siteroot = flag.String("siteroot", "/opt/atlas-sw", "where to install software")
+var g_worch_profile = flag.String("profile", "build-lcg.cfg", "worch-profile to run for the build")
+var g_docker_tag = flag.String("docker-tag", "binet/lcg", "tag to apply as a result of the build")
 
 func main() {
 	flag.Parse()
@@ -37,6 +39,7 @@ func main() {
 		*g_hwaf_version,
 		*g_hwaf_variant,
 		*g_siteroot,
+		*g_worch_profile,
 	)
 	docker.Stdout = os.Stdout
 	docker.Stderr = os.Stderr

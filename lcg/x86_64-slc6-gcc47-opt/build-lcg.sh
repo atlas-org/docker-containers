@@ -4,6 +4,7 @@ TOPDIR=$1;       shift
 HWAF_VERSION=$1; shift
 HWAF_VARIANT=$1; shift
 SITEROOT=$1;     shift
+WORCH_CONF=$1;   shift
 
 HWAF_ROOT=$SITEROOT/hwaf/hwaf-$HWAF_VERSION/linux-amd64
 
@@ -58,7 +59,7 @@ git clone -b lcg-65-branch git://github.com/atlas-org/lcg-builders
 pushd lcg-builders
 hwaf init
 hwaf setup -variant=$HWAF_VARIANT
-hwaf configure --prefix=$SITEROOT
+hwaf configure --prefix=$SITEROOT --hwaf-worch-conf=$WORCH_CONF
 hwaf
 popd # lcg-builders
 

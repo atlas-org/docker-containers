@@ -86,7 +86,7 @@ sudo rm -rf etc/ld.so.cache var/cache/ldconfig
 sudo mkdir -p --mode=0755 var/cache/ldconfig
 
 ## create a nice login bash shell
-cat >| root/.bashrc <<EOF
+cat >| ../.bashrc <<EOF
 # Personal aliases and functions.
 
 # Personal environment variables and startup programs should go in
@@ -98,8 +98,9 @@ if [ -f "/etc/bashrc" ] ; then
   source /etc/bashrc
 fi
 EOF
+sudo mv ../.bashrc root/.
 
-cat >| root/.bash_profile <<EOF
+cat >| ../.bash_profile <<EOF
 # Personal environment variables and startup programs.
 
 # Personal aliases and functions should go in ~/.bashrc.  System wide
@@ -112,9 +113,10 @@ fi
 
 export PYTHONSTARTUP=/root/.pythonrc.py
 EOF
+sudo mv ../.bash_profile root/.
 
 ## for a nice python prompt
-cat >| root/.pythonrc.py <<EOF
+cat >| ../.pythonrc.py <<EOF
 ##
 ## for tab-completion
 ##
@@ -135,6 +137,7 @@ atexit.register(readline.write_history_file, histfile)
 del os, atexit, histfile
 del readline
 EOF
+sudo mv ../.pythonrc.py root/.
 
 # to restore locales later:
 #  yum reinstall glibc-common

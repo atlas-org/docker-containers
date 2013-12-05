@@ -22,7 +22,7 @@ set -x
 
 ### ---------------------------------------------------------------------------
 echo "::: install base RPMs..."
-yum install -y autoconf automake binutils-devel bzip2-devel bzip2 environment-modules file gcc gcc-c++ git glibc-devel libtool libXpm-devel libXft-devel libXext-devel m4 make ncurses-devel patch readline readline-devel tar texinfo
+yum install -y autoconf automake binutils-devel bzip2-devel bzip2 environment-modules file gcc gcc-c++ git glibc-devel glibc-static libtool libXpm-devel libXft-devel libXext-devel m4 make ncurses-devel patch readline readline-devel tar texinfo
 
 ### ---------------------------------------------------------------------------
 echo "::: install hwaf-${HWAF_VERSION}... ($HWAF_ROOT)"

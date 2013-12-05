@@ -17,33 +17,35 @@ var g_docker_tag = flag.String("docker-tag", "binet/lcg-65", "tag to apply as a 
 func main() {
 	flag.Parse()
 
-	script := "/build/build-lcg.sh"
-	fmt.Printf(">>> [%s]\n", script)
-
 	pwd, err := os.Getwd()
 	if err != nil {
 		panic(err)
 	}
 
+	//script := "/build/build-lcg.sh"
 	voldir := filepath.Join(pwd, "lcg", *g_hwaf_variant)
 
-	docker := exec.Command(
-		"sudo",
+	cmdargs := []string{
 		"docker",
 		"build",
-		"-t="+*g_docker_tag+"-"+*g_hwaf_variant,
+		"-t=" + *g_docker_tag + "-" + *g_hwaf_variant,
 		//"run",
 		//fmt.Sprintf("-v=%s:/build", voldir),
 		//"binet/slc",
 		voldir,
 		//"/bin/sh",
-		script,
-		"/build",
-		*g_hwaf_version,
-		*g_hwaf_variant,
-		*g_siteroot,
-		*g_worch_profile,
-	)
+		//script,
+		//"/build",
+		//*g_hwaf_version,
+		//*g_hwaf_variant,
+		//*g_siteroot,
+		//*g_worch_profile,
+	}
+
+	fmt.Printf(">>> [%v]\n", cmdargs)
+
+	docker := exec.Command("sudo", cmdargs)
+
 	docker.Stdout = os.Stdout
 	docker.Stderr = os.Stderr
 	docker.Stdin = os.Stdin

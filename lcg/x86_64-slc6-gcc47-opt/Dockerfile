@@ -1,5 +1,5 @@
 ## a Dockerfile to install the whole LCG stack
-FROM binet/slc
+FROM binet/lcg-65-x86_64-slc6-gcc47-opt
 MAINTAINER binet@cern.ch
 
 ENV HOME     /root
@@ -9,7 +9,7 @@ ENV SITEROOT /opt/atlas-sw
 RUN export SITEROOT
 
 ENV HWAF_VARIANT x86_64-slc6-gcc47-opt
-ENV HWAF_VERSION 20131203
+ENV HWAF_VERSION 20131204
 ENV HWAF_ROOT    $SITEROOT/hwaf/hwaf-$HWAF_VERSION/linux-amd64
 ENV PATH         $HWAF_ROOT/bin:$PATH
 
@@ -20,15 +20,8 @@ RUN export PATH
 
 ENV MODULEPATH $SITEROOT/sw/modules:$MODULEPATH
 RUN export MODULEPATH
-
-## system deps
-RUN yum install -y autoconf automake binutils-devel bzip2-devel bzip2 environment-modules file git gcc gcc-c++ libtool libXpm-devel libXft-devel libXext-devel m4 make ncurses-devel patch readline readline-devel tar texinfo
-
-RUN mkdir -p /root/lcg-build
-ADD install-hwaf.sh       /root/lcg-build/install-hwaf.sh
-ADD build-lcg.sh          /root/lcg-build/build-lcg.sh
-RUN (cd /root/lcg-build && ./build-lcg.sh)
-RUN /bin/rm -rf /root/lcg-build
+RUN . /etc/profile.d/modules.sh
+#RUN module load lcg
 
 ## EOF
 

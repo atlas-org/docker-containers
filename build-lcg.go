@@ -9,6 +9,7 @@ import (
 	"os/exec"
 	"path/filepath"
 	"text/template"
+	"time"
 )
 
 var g_hwaf_version = flag.String("hwaf-version", "20131204", "hwaf version to use")
@@ -61,6 +62,11 @@ RUN export MODULEPATH
 
 func main() {
 	flag.Parse()
+
+	start := time.Now()
+	defer func() {
+		fmt.Printf(">>> build: [%v]\n", time.Since(start))
+	}()
 
 	pwd, err := os.Getwd()
 	if err != nil {

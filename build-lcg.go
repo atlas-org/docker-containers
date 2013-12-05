@@ -23,6 +23,7 @@ type Dockerfile struct {
 	HwafVersion string
 	HwafVariant string
 	Profile     string
+	LcgBranch   string
 	DockerTag   string
 }
 
@@ -50,12 +51,10 @@ RUN export PATH
 VOLUME ["/build"]
 ADD build-lcg.sh /build/build-lcg.sh
 
-RUN /build/build-lcg.sh /build $HWAF_VERSION $HWAF_VARIANT $SITEROOT {{.Profile}}
+RUN /build/build-lcg.sh /build $HWAF_VERSION $HWAF_VARIANT {{.LcgBranch}} $SITEROOT {{.Profile}}
 
 ENV MODULEPATH $SITEROOT/sw/modules/$HWAF_VARIANT:$MODULEPATH
 RUN export MODULEPATH
-RUN . /etc/profile.d/modules.sh
-#RUN module load lcg
 
 ## EOF
 `
@@ -88,6 +87,7 @@ func main() {
 		HwafVersion: *g_hwaf_version,
 		HwafVariant: *g_hwaf_variant,
 		Profile:     *g_worch_profile,
+		LcgBranch:   "lcg-65-branch",
 		DockerTag:   *g_docker_tag + "-" + *g_hwaf_variant,
 	}
 

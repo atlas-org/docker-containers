@@ -4,6 +4,7 @@ TOPDIR=$1;       shift
 HWAF_VERSION=$1; shift
 HWAF_VARIANT=$1; shift
 SITEROOT=$1;     shift
+LCG_BRANCH=$1;   shift
 WORCH_CONF=$1;   shift
 
 HWAF_ROOT=$SITEROOT/hwaf/hwaf-$HWAF_VERSION/linux-amd64
@@ -55,7 +56,7 @@ echo "::: build lcg stack..."
 pushd $TOPDIR/scratch
 
 /bin/rm -rf lcg-builders
-git clone -b lcg-65-branch git://github.com/atlas-org/lcg-builders
+git clone -b $LCG_BRANCH git://github.com/atlas-org/lcg-builders
 pushd lcg-builders
 hwaf init
 hwaf setup -variant=$HWAF_VARIANT

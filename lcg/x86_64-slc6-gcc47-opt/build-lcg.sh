@@ -46,7 +46,12 @@ yum install -y \
     tar texinfo
 
 ## setup env-modules
-. /etc/profile.d/modules.sh
+echo '
+# enable environment-modules
+if [ -f "/etc/profile.d/modules.sh" ] ; then
+  source /etc/profile.d/modules.sh
+fi
+' >> /root/.bash_profile
 
 ### ---------------------------------------------------------------------------
 echo "::: install hwaf-${HWAF_VERSION}... ($HWAF_ROOT)"

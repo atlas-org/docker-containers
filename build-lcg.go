@@ -118,6 +118,7 @@ func main() {
 	cmdargs := []string{
 		"docker",
 		"build",
+		"-rm",
 		"-t=" + cfg.DockerTag,
 		dir,
 	}

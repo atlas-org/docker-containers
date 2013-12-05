@@ -8,7 +8,7 @@ import (
 	"path/filepath"
 )
 
-var g_hwaf_version = flag.String("hwaf-version", "20131203", "hwaf version to use")
+var g_hwaf_version = flag.String("hwaf-version", "20131204", "hwaf version to use")
 var g_hwaf_variant = flag.String("hwaf-variant", "x86_64-slc6-gcc47-opt", "hwaf variant to use")
 var g_siteroot = flag.String("siteroot", "/opt/atlas-sw", "where to install software")
 

@@ -86,7 +86,7 @@ sudo rm -rf etc/ld.so.cache var/cache/ldconfig
 sudo mkdir -p --mode=0755 var/cache/ldconfig
 
 ## create a nice login bash shell
-sudo cat >| root/.bashrc <<EOF
+cat >| root/.bashrc <<EOF
 # Personal aliases and functions.
 
 # Personal environment variables and startup programs should go in
@@ -99,7 +99,7 @@ if [ -f "/etc/bashrc" ] ; then
 fi
 EOF
 
-sudo cat > root/.bash_profile <<EOF
+cat >| root/.bash_profile <<EOF
 # Personal environment variables and startup programs.
 
 # Personal aliases and functions should go in ~/.bashrc.  System wide
@@ -114,7 +114,7 @@ export PYTHONSTARTUP=/root/.pythonrc.py
 EOF
 
 ## for a nice python prompt
-sudo cat > root/.pythonrc.py <<EOF
+cat >| root/.pythonrc.py <<EOF
 ##
 ## for tab-completion
 ##

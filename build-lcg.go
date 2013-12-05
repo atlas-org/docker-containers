@@ -12,7 +12,7 @@ var g_hwaf_version = flag.String("hwaf-version", "20131204", "hwaf version to us
 var g_hwaf_variant = flag.String("hwaf-variant", "x86_64-slc6-gcc47-opt", "hwaf variant to use")
 var g_siteroot = flag.String("siteroot", "/opt/atlas-sw", "where to install software")
 var g_worch_profile = flag.String("profile", "build-lcg.cfg", "worch-profile to run for the build")
-var g_docker_tag = flag.String("docker-tag", "binet/lcg", "tag to apply as a result of the build")
+var g_docker_tag = flag.String("docker-tag", "binet/lcg-65", "tag to apply as a result of the build")
 
 func main() {
 	flag.Parse()
@@ -30,10 +30,13 @@ func main() {
 	docker := exec.Command(
 		"sudo",
 		"docker",
-		"run",
-		fmt.Sprintf("-v=%s:/build", voldir),
+		"build",
+		"-t="+*g_docker_tag+"-"+*g_hwaf_variant,
+		//"run",
+		//fmt.Sprintf("-v=%s:/build", voldir),
 		"binet/slc",
-		"/bin/sh",
+		voldir,
+		//"/bin/sh",
 		script,
 		"/build",
 		*g_hwaf_version,

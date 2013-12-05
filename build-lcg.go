@@ -52,7 +52,7 @@ RUN export PATH
 VOLUME ["/build"]
 ADD build-lcg.sh /build/build-lcg.sh
 
-RUN /build/build-lcg.sh /build $HWAF_VERSION $HWAF_VARIANT {{.LcgBranch}} $SITEROOT {{.Profile}}
+RUN /build/build-lcg.sh /build $HWAF_VERSION $HWAF_VARIANT $SITEROOT {{.LcgBranch}} {{.Profile}}
 
 ENV MODULEPATH $SITEROOT/sw/modules/$HWAF_VARIANT:$MODULEPATH
 RUN export MODULEPATH
